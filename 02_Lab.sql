@@ -128,3 +128,13 @@ GROUP BY a.ANNO
 HAVING count(a.VENDUTA) > 1
 
 --Q10) Per ogni modello, i rivenditori che non ne hanno mai trattata una di quel modello
+SELECT a.MODELLO, r.CODR AS codice, r.CITTA AS lacity
+FROM AUTO a 
+CROSS JOIN RIVENDITORI r
+EXCEPT
+SELECT a.modello, r.codr, r.CITTA
+FROM auto a
+JOIN RIVENDITORI r ON a.CODR = r.codr 
+
+
+
